@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tiệm Nhà Sầu Riêng — hồ sơ &amp; thế giới</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#FDF6EC; --bg2:#FBE9DD; --ink:#5B4B4A; --ink-soft:#A8938E; --line:rgba(91,75,74,0.15);
+  --discBase:#FFFDF9; --discEdge:#E8D9CF; --labelBg:#FFF7EE; --labelInk:#5B4B4A; --labelSub:#A8938E;
+  --accentA:#F4B8C6; --accentB:#BFE3D0; --accentC:#FCE29A; --accentD:#C9C6F4;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:inherit;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+html,body{height:100%;margin:0;}
+body{
+  font-family:'Be Vietnam Pro',sans-serif; color:var(--ink);
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  transition:background .8s ease, color .6s ease;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased; position:relative;
+}
+.disp{ font-family:'Baloo 2',sans-serif; }
+#texture{ position:fixed; inset:0; pointer-events:none; z-index:0; transition:background 1s ease; }
+body[data-theme="home"] #texture{ background: radial-gradient(circle at 10% 10%, rgba(244,184,198,0.35), transparent 40%), radial-gradient(circle at 90% 20%, rgba(191,227,208,0.30), transparent 42%), radial-gradient(circle at 30% 90%, rgba(252,226,154,0.25), transparent 40%); }
+body[data-theme="kaiju"] #texture{ background: radial-gradient(circle at 12% 15%, rgba(183,214,187,0.4), transparent 42%), radial-gradient(circle at 88% 85%, rgba(255,215,135,0.3), transparent 42%); }
+body[data-theme="ghoul"] #texture{ background: radial-gradient(circle at 15% 20%, rgba(242,166,180,0.35), transparent 42%), radial-gradient(circle at 85% 80%, rgba(217,194,198,0.35), transparent 42%); }
+body[data-theme="csm"] #texture{ background: radial-gradient(circle at 85% 15%, rgba(255,143,163,0.3), transparent 42%), radial-gradient(circle at 15% 85%, rgba(255,224,138,0.35), transparent 42%); }
+body[data-theme="hq"] #texture{ background: radial-gradient(circle at 12% 20%, rgba(255,184,119,0.3), transparent 42%), radial-gradient(circle at 88% 80%, rgba(127,209,203,0.3), transparent 42%); }
+body[data-theme="op"] #texture{ background: radial-gradient(circle at 15% 18%, rgba(127,216,196,0.35), transparent 42%), radial-gradient(circle at 85% 82%, rgba(255,211,110,0.3), transparent 42%); }
+body[data-theme="jjk"] #texture{ background: radial-gradient(circle at 18% 20%, rgba(185,168,240,0.35), transparent 42%), radial-gradient(circle at 82% 80%, rgba(143,214,208,0.3), transparent 42%); }
+body[data-theme="hxh"] #texture{ background: radial-gradient(circle at 12% 15%, rgba(183,212,106,0.3), transparent 42%), radial-gradient(circle at 88% 85%, rgba(242,197,114,0.3), transparent 42%); }
+body[data-theme="mha"] #texture{ background: radial-gradient(circle at 85% 15%, rgba(255,138,115,0.3), transparent 42%), radial-gradient(circle at 15% 85%, rgba(126,200,227,0.3), transparent 42%); }
+body[data-theme="windbreaker"] #texture{ background: radial-gradient(circle at 12% 20%, rgba(154,209,201,0.3), transparent 42%), radial-gradient(circle at 88% 80%, rgba(242,198,160,0.3), transparent 42%); }
+body[data-theme="gakurakugai"] #texture{ background: radial-gradient(circle at 15% 20%, rgba(201,143,191,0.3), transparent 42%), radial-gradient(circle at 85% 80%, rgba(143,167,201,0.3), transparent 42%); }
+body[data-theme="irumafia"] #texture{ background: radial-gradient(circle at 15% 18%, rgba(212,163,115,0.3), transparent 42%), radial-gradient(circle at 85% 82%, rgba(107,143,113,0.25), transparent 42%); }
+body[data-theme="iruma"] #texture{ background: radial-gradient(circle at 12% 15%, rgba(255,159,90,0.3), transparent 42%), radial-gradient(circle at 88% 85%, rgba(127,199,127,0.3), transparent 42%); }
+body[data-theme="hxh"] #texture{ background: radial-gradient(circle at 14% 16%, rgba(183,212,106,0.32), transparent 42%), radial-gradient(circle at 86% 84%, rgba(242,197,114,0.3), transparent 42%); }
+body[data-theme="mha"] #texture{ background: radial-gradient(circle at 85% 15%, rgba(255,138,115,0.3), transparent 42%), radial-gradient(circle at 15% 85%, rgba(126,200,227,0.3), transparent 42%); }
+body[data-theme="wb"] #texture{ background: radial-gradient(circle at 12% 18%, rgba(154,209,201,0.35), transparent 42%), radial-gradient(circle at 88% 82%, rgba(242,198,160,0.3), transparent 42%); }
+body[data-theme="gkrk"] #texture{ background: radial-gradient(circle at 16% 20%, rgba(217,166,208,0.35), transparent 42%), radial-gradient(circle at 84% 80%, rgba(224,112,140,0.25), transparent 42%); }
+body[data-theme="irfm"] #texture{ background: radial-gradient(circle at 15% 18%, rgba(201,178,106,0.3), transparent 42%), radial-gradient(circle at 85% 82%, rgba(136,146,199,0.3), transparent 42%); }
+body[data-theme="imk"] #texture{ background: radial-gradient(circle at 18% 18%, rgba(201,160,224,0.32), transparent 42%), radial-gradient(circle at 82% 82%, rgba(242,178,92,0.3), transparent 42%); }
+
+body[data-theme="kaiju"]{ --bg1:#EAF3EA; --bg2:#DCEBDD; --ink:#3F4F42; --ink-soft:#7C9482; --line:rgba(63,79,66,0.15);
+  --discBase:#F5FBF3; --discEdge:#CFE2CF; --labelBg:#FFFFFF; --labelInk:#3F4F42; --labelSub:#7C9482;
+  --accentA:#FFD787; --accentB:#B7D6BB; --accentC:#AFC9D8; --accentD:#F3B79A; }
+body[data-theme="ghoul"]{ --bg1:#FBEFF0; --bg2:#F6DEE1; --ink:#5B3A3F; --ink-soft:#A9878B; --line:rgba(91,58,63,0.14);
+  --discBase:#FFF8F9; --discEdge:#EAD3D6; --labelBg:#FFFFFF; --labelInk:#5B3A3F; --labelSub:#A9878B;
+  --accentA:#F2A6B4; --accentB:#D9C2C6; --accentC:#F6C9CE; --accentD:#8C6B70; }
+body[data-theme="csm"]{ --bg1:#FFF3E9; --bg2:#FFE3CC; --ink:#6B4A34; --ink-soft:#B08F72; --line:rgba(107,74,52,0.16);
+  --discBase:#FFFBF6; --discEdge:#F2DCC7; --labelBg:#FFFFFF; --labelInk:#6B4A34; --labelSub:#B08F72;
+  --accentA:#FFB37B; --accentB:#FF8FA3; --accentC:#FFE08A; --accentD:#8A6650; }
+body[data-theme="hq"]{ --bg1:#EAF6FB; --bg2:#D9EEF7; --ink:#2E4A57; --ink-soft:#7FA3B0; --line:rgba(46,74,87,0.15);
+  --discBase:#FFFFFF; --discEdge:#CFE6EE; --labelBg:#FFFFFF; --labelInk:#2E4A57; --labelSub:#7FA3B0;
+  --accentA:#FFB877; --accentB:#7FD1CB; --accentC:#FFE28A; --accentD:#FF9E9E; }
+body[data-theme="op"]{ --bg1:#E8F6FB; --bg2:#D3ECF5; --ink:#1F4E5F; --ink-soft:#6E97A3; --line:rgba(31,78,95,0.15);
+  --discBase:#FFFFFF; --discEdge:#CFE9EE; --labelBg:#FFFFFF; --labelInk:#1F4E5F; --labelSub:#6E97A3;
+  --accentA:#FFD36E; --accentB:#7FD8C4; --accentC:#FF9E6D; --accentD:#F4E6C6; }
+body[data-theme="jjk"]{ --bg1:#F1EEFB; --bg2:#E4DEF7; --ink:#453A63; --ink-soft:#8F84AC; --line:rgba(69,58,99,0.15);
+  --discBase:#FBFAFF; --discEdge:#DCD4F2; --labelBg:#FFFFFF; --labelInk:#453A63; --labelSub:#8F84AC;
+  --accentA:#B9A8F0; --accentB:#8FD6D0; --accentC:#F7C6E0; --accentD:#6A5A94; }
+body[data-theme="hxh"]{ --bg1:#EFF6EC; --bg2:#E1EEDB; --ink:#3C4A2E; --ink-soft:#839376; --line:rgba(60,74,46,0.15);
+  --discBase:#FAFDF7; --discEdge:#D7E6C9; --labelBg:#FFFFFF; --labelInk:#3C4A2E; --labelSub:#839376;
+  --accentA:#B7D46A; --accentB:#F2C572; --accentC:#8FCDBE; --accentD:#E0846B; }
+body[data-theme="mha"]{ --bg1:#FFF0EE; --bg2:#FFE1DC; --ink:#5A2E2A; --ink-soft:#B08A83; --line:rgba(90,46,42,0.15);
+  --discBase:#FFFBF9; --discEdge:#F5D9D0; --labelBg:#FFFFFF; --labelInk:#5A2E2A; --labelSub:#B08A83;
+  --accentA:#FF8A73; --accentB:#7EC8E3; --accentC:#FFE08A; --accentD:#3A2622; }
+body[data-theme="windbreaker"]{ --bg1:#EAF2F4; --bg2:#DCEAEE; --ink:#2E4448; --ink-soft:#7B9BA0; --line:rgba(46,68,72,0.15);
+  --discBase:#FFFFFF; --discEdge:#CFE2E6; --labelBg:#FFFFFF; --labelInk:#2E4448; --labelSub:#7B9BA0;
+  --accentA:#9AD1C9; --accentB:#C9D8DE; --accentC:#F2C6A0; --accentD:#35505A; }
+body[data-theme="gakurakugai"]{ --bg1:#F3EAF2; --bg2:#E8D7E6; --ink:#4A2E47; --ink-soft:#9A7E96; --line:rgba(74,46,71,0.15);
+  --discBase:#FBF5FA; --discEdge:#E6D2E3; --labelBg:#FFFFFF; --labelInk:#4A2E47; --labelSub:#9A7E96;
+  --accentA:#C98FBF; --accentB:#8FA7C9; --accentC:#E0B45C; --accentD:#3A2438; }
+body[data-theme="irumafia"]{ --bg1:#F0EDE8; --bg2:#E2DCD3; --ink:#3A332B; --ink-soft:#8C8275; --line:rgba(58,51,43,0.15);
+  --discBase:#FAF8F5; --discEdge:#E3DACB; --labelBg:#FFFFFF; --labelInk:#3A332B; --labelSub:#8C8275;
+  --accentA:#D4A373; --accentB:#E0A978; --accentC:#6B8F71; --accentD:#2B2520; }
+body[data-theme="iruma"]{ --bg1:#FFF0E6; --bg2:#FFE0CC; --ink:#5A3A1F; --ink-soft:#B08A5F; --line:rgba(90,58,31,0.15);
+  --discBase:#FFFAF4; --discEdge:#F2DCC2; --labelBg:#FFFFFF; --labelInk:#5A3A1F; --labelSub:#B08A5F;
+  --accentA:#FF9F5A; --accentB:#7FC77F; --accentC:#FFE896; --accentD:#4A2E14; }
+
+.stage{ position:relative; z-index:1; max-width:1120px; margin:0 auto; padding:0 24px; }
+
+header.site{ padding:calc(24px + env(safe-area-inset-top,0px)) 0 6px; display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.brand{ font-size:13.5px; letter-spacing:.03em; color:var(--ink-soft); }
+.crumbs{ font-family:'Baloo 2',sans-serif; font-size:14px; color:var(--ink-soft); }
+
+.hall-hero,.world-hero{ display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center; padding:22px 0 18px; }
+.vinyl-zone{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+.vinyl-wrap{ position:relative; width:min(300px,72vw); cursor:pointer; animation:idle-spin 55s linear infinite; }
+.vinyl-wrap.playing{ animation:fast-spin 9s linear infinite; }
+@keyframes idle-spin{ to{transform:rotate(360deg);} }
+@keyframes fast-spin{ to{transform:rotate(360deg);} }
+.vinyl-wrap svg{ width:100%; display:block; filter:drop-shadow(0 14px 22px rgba(91,75,74,0.18)); }
+
+.player-bar{ display:flex; align-items:center; gap:10px; width:min(300px,72vw); font-size:12px; color:var(--ink-soft); }
+.play-btn{ width:32px; height:32px; border-radius:50%; border:1px solid var(--line); background:#fff; color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none; font-size:12px; box-shadow:0 3px 8px rgba(0,0,0,0.06); }
+.play-btn:hover{ background:var(--accentA); border-color:var(--accentA); }
+.vol{ flex:1; accent-color:var(--accentA); }
+.now{ font-family:'Baloo 2',sans-serif; font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+.hero-copy .eyebrow{ font-family:'Baloo 2',sans-serif; font-size:12.5px; letter-spacing:.02em; color:var(--ink-soft); margin:0 0 8px; }
+.hall-hero h1{ font-family:'Baloo 2',sans-serif; font-weight:700; font-size:clamp(30px,4.4vw,46px); line-height:1.1; margin:0 0 12px; color:var(--ink); }
+.hall-hero h1 em{ font-style:normal; color:var(--accentB); -webkit-text-stroke:0; }
+.world-hero h1{ font-family:'Baloo 2',sans-serif; font-weight:700; font-size:clamp(28px,4.4vw,42px); line-height:1.1; margin:0 0 10px; }
+.lede{ font-size:15px; color:var(--ink-soft); max-width:42ch; margin:0; }
+
+.searchbar{ display:flex; gap:10px; margin:18px 0 12px; flex-wrap:wrap; }
+.searchbar input{ flex:1; min-width:180px; padding:11px 16px; border-radius:100px; border:1px solid var(--line); background:#fff; font-family:'Be Vietnam Pro',sans-serif; font-size:14px; color:var(--ink); outline:none; }
+.searchbar input:focus{ border-color:var(--accentA); }
+.tagrow{ display:flex; gap:7px; flex-wrap:wrap; margin-bottom:18px; }
+.tagchip{ font-family:'Baloo 2',sans-serif; font-size:12.5px; padding:6px 13px; border-radius:100px; border:1px solid var(--line); background:#fff; color:var(--ink-soft); cursor:pointer; transition:all .2s ease; }
+.tagchip.active{ background:var(--accentB); border-color:var(--accentB); color:var(--ink); }
+.tagchip:hover:not(.active){ border-color:var(--accentB); }
+
+.cat-tabs{ display:flex; gap:6px; flex-wrap:wrap; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:12px 0; margin:16px 0 18px; }
+.cat-tabs button{ font-family:'Baloo 2',sans-serif; font-size:12.5px; padding:7px 14px; border-radius:100px; border:1px solid var(--line); background:transparent; color:var(--ink-soft); cursor:pointer; transition:all .2s ease; }
+.cat-tabs button.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+.cat-tabs button:hover:not(.active){ border-color:var(--accentA); color:var(--ink); }
+
+.entry-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; padding-bottom:16px; }
+.entry-card{ position:relative; display:flex; align-items:center; gap:12px; padding:14px; border:1px solid var(--line); border-radius:18px; cursor:pointer; background:#fff; transition:transform .2s ease, box-shadow .2s ease; text-align:left; text-decoration:none; color:inherit; }
+.entry-card .resnote{ display:block; font-size:11px; color:var(--ink-soft); margin-top:3px; font-style:italic; }
+.entry-card:hover{ transform:translateY(-2px); box-shadow:0 10px 20px rgba(91,75,74,0.10); }
+.entry-card .mini{ width:44px; height:44px; flex:none; border-radius:50%; overflow:hidden; }
+.entry-card .mini svg{ width:100%; display:block; }
+.entry-card strong{ display:block; font-family:'Baloo 2',sans-serif; font-size:15.5px; }
+.entry-card .chips{ display:flex; gap:5px; flex-wrap:wrap; margin-top:4px; }
+.entry-card .chips span{ font-size:10.5px; color:var(--ink-soft); background:var(--bg2); padding:2px 8px; border-radius:100px; }
+.entry-card .mgmt{ position:absolute; top:8px; right:8px; display:flex; gap:4px; }
+.entry-card .mgmt button{ width:24px; height:24px; border-radius:50%; border:none; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.15); font-size:11px; cursor:pointer; }
+
+.empty{ font-size:14px; color:var(--ink-soft); font-style:italic; padding:8px 2px 26px; }
+.add-btn{ font-family:'Baloo 2',sans-serif; font-size:13px; padding:9px 16px; border-radius:100px; border:1px dashed var(--accentA); background:transparent; color:var(--ink); cursor:pointer; margin-bottom:14px; }
+.add-btn:hover{ background:var(--accentA); border-style:solid; }
+
+.frames{ display:flex; gap:14px; flex-wrap:wrap; padding:4px 0 22px; }
+.frame{ position:relative; width:100px; height:126px; padding:7px 7px 18px; background:var(--labelBg); border:1px solid var(--line); border-radius:14px; box-shadow:0 6px 14px rgba(91,75,74,0.12); cursor:pointer; transform:rotate(var(--r,0deg)); transition:transform .25s ease; flex:none; }
+.frame-edit{ position:absolute; top:-6px; right:-6px; width:24px; height:24px; border-radius:50%; border:none; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.2); font-size:11px; cursor:pointer; z-index:2; }
+.frame:hover{ transform:rotate(0deg) translateY(-3px); }
+.frame-face{ position:absolute; top:7px; left:7px; right:7px; bottom:18px; border-radius:9px; background:linear-gradient(150deg,var(--accentA),var(--accentB)); opacity:.9; transition:opacity .3s ease; }
+.frame-cap{ position:absolute; top:7px; left:7px; right:7px; bottom:18px; border-radius:9px; display:flex; align-items:center; justify-content:center; text-align:center; font-family:'Be Vietnam Pro',sans-serif; font-size:11px; color:var(--labelInk); background:var(--labelBg); opacity:0; transform:translateY(6px); transition:all .3s ease; padding:8px; }
+.frame.open .frame-face{ opacity:0; } .frame.open .frame-cap{ opacity:1; transform:translateY(0); }
+
+.back{ font-family:'Baloo 2',sans-serif; font-size:12.5px; background:none; border:none; color:var(--ink-soft); cursor:pointer; padding:16px 0 0; }
+.back:hover{ color:var(--accentB); }
+
+footer{ border-top:1px solid var(--line); padding:20px 4px calc(34px + env(safe-area-inset-bottom,0px)); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:12px; color:var(--ink-soft); }
+.owner-toggle{ border:none; background:transparent; cursor:pointer; font-size:14px; opacity:.5; }
+.owner-toggle.on{ opacity:1; }
+
+/* modal */
+.modal-overlay{ position:fixed; inset:0; background:rgba(91,75,74,0.35); backdrop-filter:blur(2px); display:flex; align-items:center; justify-content:center; z-index:50; padding:20px; }
+.modal-overlay[hidden]{ display:none; }
+.modal-card{ background:#fff; border-radius:22px; max-width:420px; width:100%; max-height:86vh; overflow-y:auto; padding:26px; position:relative; box-shadow:0 20px 50px rgba(91,75,74,0.25); }
+.modal-close{ position:absolute; top:14px; right:14px; width:30px; height:30px; border-radius:50%; border:none; background:var(--bg2); cursor:pointer; font-size:14px; }
+.modal-card h3{ font-family:'Baloo 2',sans-serif; font-size:22px; margin:6px 0 8px; }
+.modal-chips{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+.modal-chips span{ font-size:11.5px; background:var(--bg2); color:var(--ink-soft); padding:4px 10px; border-radius:100px; }
+.modal-plot{ font-size:14px; line-height:1.6; color:var(--ink); margin:0 0 20px; }
+.modal-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.modal-actions a, .modal-actions button{ font-family:'Baloo 2',sans-serif; font-size:13px; padding:10px 16px; border-radius:100px; text-decoration:none; border:none; cursor:pointer; }
+.act-primary{ background:var(--ink); color:#fff; }
+.act-primary:hover{ background:var(--accentA); color:var(--ink); }
+.act-secondary{ background:var(--bg2); color:var(--ink); }
+
+.form-field{ margin-bottom:14px; }
+.form-field label{ display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:5px; }
+.form-field input, .form-field textarea, .form-field select{ width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--line); font-family:'Be Vietnam Pro',sans-serif; font-size:13.5px; }
+.file-btn{ display:inline-block; padding:10px 16px; border-radius:100px; background:var(--bg2); color:var(--ink); font-family:'Baloo 2',sans-serif; font-size:13px; cursor:pointer; text-align:center; border:1px dashed var(--line); }
+.file-btn:active{ background:var(--accentA); }
+.file-input-hidden{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.file-name{ display:block; font-size:11.5px; color:var(--ink-soft); margin-top:6px; }
+.form-field textarea{ min-height:70px; resize:vertical; }
+
+@media (max-width:820px){
+  .hall-hero,.world-hero{ grid-template-columns:1fr; }
+  .entry-grid{ grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion: reduce){ .vinyl-wrap{ animation:none; } .frame{ transition:none; } }
+</style>
+</head>
+<body data-theme="home">
+<div id="texture"></div>
+<div class="stage">
+
+  <header class="site">
+    <span class="brand">Cố Thanh</span>
+    <span style="display:flex;align-items:center;gap:10px;">
+      <span class="crumbs" id="crumbs">Sảnh</span>
+      <button class="owner-toggle" id="ownerToggle" title="Chủ web">🔑</button>
+    </span>
+  </header>
+
+  <section id="hall">
+    <div class="hall-hero">
+      <div class="vinyl-zone">
+        <div class="vinyl-wrap" id="hallVinyl" role="button" tabindex="0" aria-label="Bấm để nghe nhạc nền sảnh"><div id="hallVinylArt"></div></div>
+        <div class="player-bar">
+          <button class="play-btn" id="hallPlayBtn">▶</button>
+          <input class="vol" id="hallVol" type="range" min="0" max="100" value="75">
+          <span class="now" id="hallNow">Sảnh · im lặng</span>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">an archive of worlds, characters &amp; stories 🌷</p>
+        <h1>Tiệm Nhà <em>Sầu Riêng</em></h1>
+        <p class="lede">Một góc nhỏ dễ thương để lưu mấy thế giới mình thích. Lướt hồ sơ, đọc cốt truyện, rồi ghé thẳng vào bên trong nhé.</p>
+      </div>
+    </div>
+
+    <nav class="cat-tabs" id="hallTabs">
+      <button data-cat="worlds" class="active">Open World</button>
+      <button data-cat="character">Character</button>
+      <button data-cat="prompt">Prompt</button>
+      <button data-cat="anime">Anime</button>
+      <button data-cat="share">Share</button>
+    </nav>
+    <div id="hallPanel"></div>
+  </section>
+
+  <section id="worldView" hidden>
+    <button class="back" id="backBtn">‹ Quay lại sảnh</button>
+    <div class="world-hero">
+      <div class="vinyl-zone">
+        <div class="vinyl-wrap" id="worldVinyl" role="button" tabindex="0"><div id="worldVinylArt"></div></div>
+        <div class="player-bar">
+          <button class="play-btn" id="worldPlayBtn">❚❚</button>
+          <input class="vol" id="worldVol" type="range" min="0" max="100" value="75">
+          <span class="now" id="worldNow"></span>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow" id="worldTag"></p>
+        <h1 id="worldTitle"></h1>
+        <p class="lede" id="worldLede"></p>
+      </div>
+    </div>
+    <div class="frames" id="worldFrames"></div>
+    <a class="add-btn" id="worldOpenLink" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none;text-align:center;">🔗 Mở link trực tiếp</a>
+  </section>
+
+  <footer>
+    <span>Tiệm Nhà Sầu Riêng · dựng bởi Cố Thanh</span>
+  </footer>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden></div>
+
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <ellipse id="blob" cx="0" cy="-42" rx="10" ry="24"/>
+    <circle id="dot" cx="0" cy="0" r="4.5"/>
+    <path id="tooth" d="M-6,-128 Q0,-146 6,-128 Q0,-134 -6,-128 Z"/>
+    <path id="labelArc" d="M 150,150 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"/>
+  </defs>
+</svg>
+
+<script>
+(function(){
+  const SEED_ENTRIES = [
+    { id:'kaiju', type:'world', label:'Kaiju No. 8', theme:'kaiju', tags:['Open World','Hành động','Kịch tính'],
+      plot:'Một thế giới nơi quái thú xuất hiện đều đặn mỗi ngày, và ranh giới giữa người bảo vệ với thứ bị xem là quái vật ngày càng mong manh hơn ai tưởng.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221YKgwDLzkzFqKXq5R0luklCYiztkll1s3%22%5D,%22action%22:%22open%22,%22userId%22:%22107296012742357932623%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing',
+      frames:['Báo cáo số 08 — quái thú xuất hiện lúc rạng sáng 🌤️','Một lời hứa cũ chưa kịp nói ra','Con số trên phù hiệu không nói hết câu chuyện'] },
+    { id:'ghoul', type:'world', label:'Tokyo Ghoul', theme:'ghoul', tags:['Open World','Kinh dị','Tâm lý'],
+      plot:'Giữa thành phố về đêm, có những người phải giấu đi một nửa con người thật của mình chỉ để được sống tiếp đến sáng.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ewQCm9YA1cipXtPl3bkL6S_EiewgITR-%22%5D,%22action%22:%22open%22,%22userId%22:%22111190278977637990006%22,%22resourceKeys%22:%7B%7D%7D',
+      frames:['Chiếc mặt nạ không che được hết nỗi sợ','Cà phê nguội trong một quán vắng người ☕','Ranh giới giữa hai thế giới mỏng hơn ta tưởng'] },
+    { id:'csm', type:'world', label:'Chainsaw Man', theme:'csm', tags:['Open World','Hành động','Hỗn loạn dễ thương'],
+      plot:'Một thế giới đầy quỷ dữ, nơi ước mơ của một chàng trai nghèo chỉ đơn giản là được ăn no và ngủ ấm.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221coFO2n_dOmDX5f40-Up2V0NbDVc08lYv%22%5D,%22action%22:%22open%22,%22userId%22:%22111190278977637990006%22,%22resourceKeys%22:%7B%7D%7D',
+      frames:['Một ước mơ rất nhỏ: bánh mì kẹp mứt mỗi sáng 🍞','Tiếng cưa máy vang giữa con hẻm tối','Ai cũng có một con quỷ muốn quên đi'] },
+    { id:'hq', type:'world', label:'Haikyuu!!', theme:'hq', tags:['Open World','Thể thao','Học đường'],
+      plot:'Một sân đấu nhỏ, một trái bóng, và rất nhiều cú nhảy chưa ai từng dám thử — trận đấu chỉ kết thúc khi không ai còn muốn bước tiếp.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221kdK9TGwoIIEBOV3K0vLXvT7R9j-I-nAE%22%5D,%22action%22:%22open%22,%22userId%22:%22111190278977637990006%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing',
+      frames:['Tiếng giày ma sát trên sàn gỗ 🏐','Một cú chuyền không ai ngờ tới','Trận đấu chưa kết thúc chừng nào bóng còn chưa chạm đất'] },
+    { id:'op', type:'world', label:'One Piece', theme:'op', tags:['Open World','Phiêu lưu','Hài hước'],
+      plot:'Một vùng biển rộng lớn đầy đảo lạ và kho báu, nơi một nhóm bạn kỳ quặc cùng nhau đi tìm giấc mơ của riêng mình.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221OFD8PrJ9m5eZvgqr8zJ5SCEZXX7rJY8j%22%5D,%22action%22:%22open%22,%22userId%22:%22113396638071228713201%22,%22resourceKeys%22:%7B%7D%7D',
+      frames:['Một tấm bản đồ vẽ dở, thiếu mất một góc 🗺️','Tiếng cười ồn ào trên một con tàu nhỏ','Giấc mơ nào cũng đáng để giương buồm ra khơi'] },
+    { id:'jjk', type:'world', label:'Jujutsu Kaisen', theme:'jjk', tags:['Open World','Siêu nhiên','Học đường'],
+      plot:'Một ngôi trường đặc biệt nơi những lời nguyền vô hình lẩn khuất khắp nơi, và ai cũng phải học cách sống chung với phần tối trong chính mình.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221zhNDhXZ6k5OIuuDnfJK_FRp6-QuBMmoF%22%5D,%22action%22:%22open%22,%22userId%22:%22108084374883766947650%22,%22resourceKeys%22:%7B%7D%7D',
+      frames:['Một lá bùa gấp vội trong túi áo','Ánh đèn hành lang lúc nửa đêm','Ai cũng mang theo một lời nguyền riêng của mình'] },
+    { id:'hxh', type:'world', label:'Hunter x Hunter', theme:'hxh', tags:['Open World','Phiêu lưu','Bạn bè'],
+      plot:'Một kỳ thi khắc nghiệt mở ra cánh cửa tới hàng ngàn con đường khác nhau, và mỗi người phải tự chọn lấy con đường muốn đi tiếp.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221A6mz42HUx83o96b4GTcuCF7vUOaJDcOi%22%5D,%22action%22:%22open%22,%22userId%22:%22108084374883766947650%22,%22resourceKeys%22:%7B%7D%7D',
+      frames:['Một tấm thẻ thi vẫn còn ướt mồ hôi tay','Lời hứa giữa hai người bạn nhỏ','Con đường nào cũng có giá phải trả'] },
+    { id:'mha', type:'world', label:'My Hero Academia', theme:'mha', tags:['Open World','Học đường','Siêu anh hùng'],
+      plot:'Một ngôi trường đào tạo anh hùng, nơi ai cũng đang cố chứng minh rằng sức mạnh của mình xứng đáng được công nhận.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221V1f7-06vOT9Mrf_GB6UN5eKl7K6wQ3rS%22%5D,%22action%22:%22open%22,%22userId%22:%22111028461491084343748%22,%22resourceKeys%22:%7B%7D%7D',
+      frames:['Một huy hiệu thực tập còn mới tinh','Tiếng nổ quen thuộc vọng từ sân tập','Ai cũng từng là số không trước khi thành anh hùng'] },
+    { id:'windbreaker', type:'world', label:'Wind Breaker', theme:'windbreaker', tags:['Open World','Học đường','Giang hồ'],
+      plot:'Đằng sau những trận ẩu đả ở một ngôi trường toàn học sinh cá biệt là một thứ tình bạn không ai ngờ tới.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221vyguF4K_c23go6gNEdRvTt3tFo5bh_AX%22%5D,%22action%22:%22open%22,%22userId%22:%22110349720100535461970%22,%22resourceKeys%22:%7B%7D%7D',
+      frames:['Một vết bầm chưa kịp lành','Gió lùa qua con dốc sau giờ tan học','Đứng một mình mãi rồi cũng chán'] },
+    { id:'gakurakugai', type:'world', label:'Gakurakugai', theme:'gakurakugai', tags:['Open World','Giang hồ','U tối'],
+      plot:'Một thành phố không ngủ, nơi ranh giới giữa ánh đèn hoa lệ và những góc tối luôn mỏng hơn người ta tưởng.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221zIDiO03ta5VV9Qh1UB56hmkWxKcjUCcY%22%5D,%22action%22:%22open%22,%22userId%22:%22108084374883766947650%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing',
+      frames:['Ánh đèn neon phản chiếu trên vũng nước','Một món nợ chưa ai dám đòi','Nụ cười nào cũng có thể là một lời đe doạ'] },
+    { id:'irumafia', type:'world', label:'Irumafia', theme:'irumafia', tags:['Open World','Giang hồ','AU'],
+      plot:'Một thế giới ngầm đầy luật lệ riêng, nơi lòng trung thành đôi khi quý giá hơn cả quyền lực.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221BX5AlsSxDCt5XqRKm8Oqqgj2-Fb4Ulbm%22%5D,%22action%22:%22open%22,%22userId%22:%22108084374883766947650%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing',
+      frames:['Một bộ vest còn thơm mùi mới','Chữ ký dưới một bản hợp đồng không tên','Trung thành hay sợ hãi, đôi khi khó phân biệt'] },
+    { id:'iruma', type:'world', label:'Mairimashita! Iruma-kun', theme:'iruma', tags:['Open World','Học đường','Giả tưởng'],
+      plot:'Một cậu học trò loài người lạc giữa ngôi trường toàn quỷ dữ, cố học cách sống sót bằng chính sự tử tế của mình.',
+      link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mw2jyGpekKEjiaYX0HvjPP5dcLpd7EVu%22%5D,%22action%22:%22open%22,%22userId%22:%22108084374883766947650%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing',
+      frames:['Một chiếc cặp sách giữa sân trường toàn quỷ','Nụ cười ngại ngùng của một học sinh không giống ai','Tử tế đôi khi lại là thứ vũ khí mạnh nhất'] }
+  ];
+
+  const THEME_PRESET = {
+    home:{scale:[261.63,293.66,329.63,392.00,440.00],oscType:'sine',tempoMin:480,tempoRange:260,filterFreq:3200,delayTime:0.34,feedback:0.30,pulse:false},
+    kaiju:{scale:[293.66,349.23,392.00,440.00,523.25],oscType:'triangle',tempoMin:600,tempoRange:250,filterFreq:2200,delayTime:0.24,feedback:0.24,pulse:true},
+    ghoul:{scale:[220.00,261.63,293.66,329.63,392.00],oscType:'sine',tempoMin:780,tempoRange:380,filterFreq:1500,delayTime:0.48,feedback:0.4,pulse:false},
+    csm:{scale:[329.63,392.00,440.00,493.88,587.33],oscType:'triangle',tempoMin:380,tempoRange:180,filterFreq:2800,delayTime:0.2,feedback:0.24,pulse:false},
+    hq:{scale:[392.00,440.00,493.88,587.33,659.25],oscType:'sine',tempoMin:300,tempoRange:180,filterFreq:4200,delayTime:0.26,feedback:0.26,pulse:true},
+    op:{scale:[349.23,392.00,440.00,523.25,587.33],oscType:'triangle',tempoMin:400,tempoRange:220,filterFreq:3800,delayTime:0.3,feedback:0.28,pulse:true},
+    jjk:{scale:[246.94,293.66,329.63,369.99,440.00],oscType:'sine',tempoMin:700,tempoRange:300,filterFreq:1400,delayTime:0.46,feedback:0.38,pulse:false},
+    hxh:{scale:[293.66,349.23,392.00,440.00,523.25],oscType:'triangle',tempoMin:420,tempoRange:220,filterFreq:3600,delayTime:0.32,feedback:0.28,pulse:true},
+    mha:{scale:[329.63,392.00,440.00,493.88,587.33],oscType:'triangle',tempoMin:340,tempoRange:180,filterFreq:4000,delayTime:0.24,feedback:0.24,pulse:true},
+    windbreaker:{scale:[246.94,293.66,311.13,369.99,415.30],oscType:'sine',tempoMin:550,tempoRange:260,filterFreq:2000,delayTime:0.4,feedback:0.34,pulse:false},
+    gakurakugai:{scale:[233.08,277.18,311.13,349.23,415.30],oscType:'sine',tempoMin:650,tempoRange:300,filterFreq:1300,delayTime:0.48,feedback:0.4,pulse:false},
+    irumafia:{scale:[220.00,246.94,277.18,329.63,369.99],oscType:'triangle',tempoMin:500,tempoRange:220,filterFreq:1800,delayTime:0.3,feedback:0.3,pulse:false},
+    iruma:{scale:[349.23,392.00,440.00,523.25,587.33],oscType:'triangle',tempoMin:360,tempoRange:200,filterFreq:4200,delayTime:0.28,feedback:0.26,pulse:true}
+  };
+  const PLAYLIST_NAMES = {
+    home:['Nắng Sảnh Chiều','Gió Nhẹ Ngoài Hiên','Chiều Lười Ở Nhà'],
+    kaiju:['Trạm Gác Yên Tĩnh','Radar Đêm Khuya'],
+    ghoul:['Đèn Đường Khu 20','Cà Phê Nguội'],
+    csm:['Bánh Mì Buổi Sáng','Hẻm Nhỏ Về Đêm'],
+    hq:['Nắng Sân Tập','Tiếng Giày Vang'],
+    op:['Gió Biển Chiều Tà','Hải Đăng Xa Xăm'],
+    jjk:['Bùa Chú Thầm Lặng','Ngõ Nhỏ Nửa Đêm'],
+    hxh:['Kỳ Thi Chưa Kết Thúc','Đảo Xanh Xa Lạ'],
+    mha:['Sân Tập Buổi Chiều','Huy Hiệu Còn Mới'],
+    windbreaker:['Con Dốc Sau Giờ Tan','Gió Lùa Qua Hẻm'],
+    gakurakugai:['Đèn Neon Nửa Đêm','Góc Phố Không Ngủ'],
+    irumafia:['Bản Hợp Đồng Im Lặng','Ly Rượu Cuối Ngày'],
+    iruma:['Giờ Ra Chơi Ở Trường Quỷ','Cặp Sách Giữa Sân Trường']
+  };
+  function buildPlaylist(themeKey){
+    const base = THEME_PRESET[themeKey]||THEME_PRESET.home;
+    const names = PLAYLIST_NAMES[themeKey]||PLAYLIST_NAMES.home;
+    return names.map((name,i)=>{
+      if(i===0) return Object.assign({name}, base);
+      const shift = i%2 ? 1.0595 : 0.9439;
+      return Object.assign({}, base, { name, tempoMin:Math.round(base.tempoMin*(0.85+0.08*i)), scale: base.scale.map(f=>+(f*Math.pow(shift,i)).toFixed(2)) });
+    });
+  }
+  const OWNER_KEY_ENTRIES = 'tsr_entries_v1';
+  const OWNER_KEY_FLAG = 'tsr_owner_v1';
+  const OWNER_PASS = '0967563633';
+  const CAT_LABELS = {worlds:'Hồ sơ',character:'Character',prompt:'Prompt',anime:'Anime',share:'Share'};
+  const CAT_EMPTY = {
+    character:()=>'Chưa có nhân vật lẻ nào — sẽ cập nhật sau.',
+    prompt:()=>'Chưa có prompt riêng — sẽ thêm sau.',
+    anime:()=>'Ghi chú/anime liên quan sẽ nằm ở đây.',
+    share:()=>'Lệnh hỗ trợ chia sẻ chưa có — sẽ cập nhật sau.'
+  };
+
+  const OWNER_KEY_EXTRAS = 'tsr_extras_v1';
+  const SEED_EXTRAS = {
+    character: [
+      { id:'gojo', title:'Gojo Satoru', body:'Thầy giáo mạnh nhất, miệng lúc nào cũng trêu chọc nhưng chưa từng lùi bước trước học trò của mình.', link:'https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221pacTwC-pCbItNq7Yb_9GHr09tXQHqZ4-%22%5D,%22action%22:%22open%22,%22userId%22:%22102505152854191924305%22,%22resourceKeys%22:%7B%7D%7D', img:null }
+    ],
+    prompt: [], anime: [], share: []
+  };
+  function loadExtras(){
+    try{ const raw = localStorage.getItem(OWNER_KEY_EXTRAS); if(raw) return JSON.parse(raw); }catch(e){}
+    return JSON.parse(JSON.stringify(SEED_EXTRAS));
+  }
+  function saveExtras(){ try{ localStorage.setItem(OWNER_KEY_EXTRAS, JSON.stringify(extras)); }catch(e){} }
+
+  let entries = loadEntries();
+  let extras = loadExtras();
+  let ownerMode = localStorage.getItem(OWNER_KEY_FLAG) === '1';
+  let searchQ = '';
+  let activeTag = null;
+  let currentWorld = null;
+
+  function loadEntries(){
+    try{ const raw = localStorage.getItem(OWNER_KEY_ENTRIES); if(raw) return JSON.parse(raw); }catch(e){}
+    return JSON.parse(JSON.stringify(SEED_ENTRIES));
+  }
+  function saveEntries(){ try{ localStorage.setItem(OWNER_KEY_ENTRIES, JSON.stringify(entries)); }catch(e){} }
+
+  function buildVinyl(themeKey, decorSeed){
+    const seeds = {
+      home:[[10,'A'],[50,'B'],[95,'C'],[140,'D'],[185,'A'],[230,'B'],[275,'C'],[320,'D']],
+      kaiju:[[15,'B'],[70,'A'],[130,'C'],[190,'B'],[250,'D'],[310,'A']],
+      ghoul:[[20,'A'],[100,'C'],[210,'A'],[300,'C']],
+      csm:[[10,'A'],[60,'B'],[110,'C'],[170,'A'],[230,'B'],[290,'C'],[330,'A']],
+      hq:[[5,'A'],[75,'B'],[150,'C'],[220,'B'],[290,'A']],
+      op:[[8,'B'],[65,'A'],[125,'C'],[190,'B'],[250,'A'],[310,'C']],
+      jjk:[[12,'D'],[80,'A'],[160,'B'],[230,'D'],[300,'A']],
+      hxh:[[8,'A'],[60,'B'],[120,'C'],[180,'A'],[240,'B'],[300,'C']],
+      mha:[[0,'A'],[45,'B'],[90,'A'],[135,'C'],[180,'A'],[225,'B'],[270,'A'],[315,'C']],
+      windbreaker:[[10,'A'],[90,'B'],[170,'A'],[250,'B'],[330,'A']],
+      gakurakugai:[[15,'A'],[95,'B'],[200,'A'],[290,'B']],
+      irumafia:[[5,'A'],[70,'B'],[140,'A'],[210,'B'],[280,'A']],
+      iruma:[[8,'A'],[65,'B'],[125,'C'],[185,'A'],[245,'B'],[305,'C']]
+    };
+    const drips = (seeds[themeKey]||seeds.home).map(d=>`<use href="#blob" transform="rotate(${d[0]}) scale(1)" fill="var(--accent${d[1]})" opacity="0.85"/>`).join('');
+    let flourish = '';
+    if(themeKey==='kaiju') flourish = Array.from({length:10},(_,i)=>i*36).map(a=>`<use href="#dot" transform="rotate(${a}) translate(0,-132)" fill="${a%72===0?'var(--accentA)':'var(--accentB)'}"/>`).join('');
+    if(themeKey==='ghoul') flourish = [30,110,200,290].map(a=>`<use href="#dot" transform="rotate(${a}) translate(0,-118) scale(1.4)" fill="var(--accentA)" opacity="0.7"/>`).join('');
+    if(themeKey==='csm') flourish = Array.from({length:16},(_,i)=>i*22.5).map((a,i)=>`<use href="#tooth" transform="rotate(${a})" fill="${i%2?'var(--accentB)':'var(--accentA)'}"/>`).join('');
+    if(themeKey==='hq') flourish = '<path d="M-90,15 A 95,95 0 0,1 90,15" stroke="var(--accentB)" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/><use href="#dot" transform="translate(60,-58) scale(0.9)" fill="var(--accentC)"/><use href="#dot" transform="translate(30,-78) scale(0.6)" fill="var(--accentC)" opacity="0.7"/>';
+    if(themeKey==='op') flourish = '<path d="M-92,-10 Q-46,20 0,-10 Q46,-40 92,-10" stroke="var(--accentB)" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/><path d="M-80,25 Q-40,50 0,25 Q40,0 80,25" stroke="var(--accentC)" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round"/>';
+    if(themeKey==='jjk') flourish = '<circle r="86" fill="none" stroke="var(--accentD)" stroke-width="1.4" stroke-dasharray="4 7" opacity="0.7"/>' + Array.from({length:8},(_,i)=>i*45).map(a=>`<use href="#dot" transform="rotate(${a}) translate(0,-86) scale(0.6)" fill="var(--accentA)" opacity="0.8"/>`).join('');
+    if(themeKey==='hxh') flourish = Array.from({length:8},(_,i)=>i*45).map(a=>`<use href="#dot" transform="rotate(${a}) translate(0,-128) scale(0.9)" fill="${a%90===0?'var(--accentB)':'var(--accentA)'}"/>`).join('');
+    if(themeKey==='mha') flourish = Array.from({length:12},(_,i)=>i*30).map(a=>`<use href="#dot" transform="rotate(${a}) translate(0,-120) scale(0.8)" fill="${a%60===0?'var(--accentB)':'var(--accentC)'}"/>`).join('');
+    if(themeKey==='windbreaker') flourish = '<path d="M-90,-8 Q-45,18 0,-8 Q45,-34 90,-8" stroke="var(--accentA)" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/><path d="M-80,22 Q-40,44 0,22 Q40,0 80,22" stroke="var(--accentC)" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>';
+    if(themeKey==='gakurakugai') flourish = [25,100,190,280].map(a=>`<g transform="rotate(${a})"><use href="#crack" stroke="var(--accentA)"/></g>`).join('');
+    if(themeKey==='irumafia') flourish = Array.from({length:6},(_,i)=>i*60).map(a=>`<use href="#dot" transform="rotate(${a}) translate(0,-110) scale(0.7)" fill="${a%120===0?'var(--accentC)':'var(--accentA)'}"/>`).join('');
+    if(themeKey==='iruma') flourish = '<path d="M-88,12 A 92,92 0 0,1 88,12" stroke="var(--accentB)" stroke-width="3" fill="none" opacity="0.55" stroke-linecap="round"/><use href="#dot" transform="translate(55,-62) scale(0.8)" fill="var(--accentC)"/><use href="#dot" transform="translate(25,-82) scale(0.5)" fill="var(--accentC)" opacity="0.7"/>';
+    return `<svg viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="140" fill="var(--discBase)"/>
+      <circle cx="150" cy="150" r="140" fill="none" stroke="var(--discEdge)" stroke-width="1.4"/>
+      <g stroke="var(--discEdge)" stroke-width="0.8" fill="none" opacity="0.7">
+        <circle cx="150" cy="150" r="126"/><circle cx="150" cy="150" r="115"/>
+        <circle cx="150" cy="150" r="104"/><circle cx="150" cy="150" r="93"/>
+      </g>
+      <g transform="translate(150,150)">${drips}${flourish}</g>
+      <circle cx="150" cy="150" r="56" fill="var(--labelBg)" stroke="var(--discEdge)" stroke-width="1.6"/>
+      <text font-family="Baloo 2, sans-serif" font-size="9.5" letter-spacing="1.5" fill="var(--labelInk)">
+        <textPath href="#labelArc" startOffset="2%">TIỆM NHÀ SẦU RIÊNG · TIỆM NHÀ SẦU RIÊNG ·</textPath>
+      </text>
+      <circle cx="150" cy="150" r="4.5" fill="var(--discEdge)"/>
+    </svg>`;
+  }
+
+  /* ---------------- audio engine ---------------- */
+  const TRACK_STEPS = 42;
+  const engine = (function(){
+    let ctx=null, master=null, comp=null, filter=null, delay=null, feedback=null, padOsc=null, padOsc2=null, padGain=null, timer=null, playingFlag=false;
+    let playlist=[], trackIndex=0, preset=null, volume=1.3, stepCount=0, onTrackChange=null;
+    function ensure(){
+      if(ctx) return;
+      ctx = new (window.AudioContext||window.webkitAudioContext)();
+      master = ctx.createGain(); master.gain.value = 0;
+      comp = ctx.createDynamicsCompressor();
+      comp.threshold.value = -32; comp.knee.value = 12; comp.ratio.value = 16; comp.attack.value = 0.002; comp.release.value = 0.15;
+      filter = ctx.createBiquadFilter(); filter.type='lowpass';
+      delay = ctx.createDelay(1); feedback = ctx.createGain();
+      delay.connect(feedback); feedback.connect(delay);
+      filter.connect(master); delay.connect(master);
+      master.connect(comp); comp.connect(ctx.destination);
+      padOsc = ctx.createOscillator(); padOsc.type='sine'; padOsc.frequency.value=110;
+      padOsc2 = ctx.createOscillator(); padOsc2.type='triangle'; padOsc2.frequency.value=110.6;
+      padGain = ctx.createGain(); padGain.gain.value = 0;
+      padOsc.connect(padGain); padOsc2.connect(padGain); padGain.connect(filter); padGain.connect(delay);
+      padOsc.start(); padOsc2.start();
+    }
+    function applyTrack(p){
+      preset = p;
+      filter.frequency.setTargetAtTime(p.filterFreq, ctx.currentTime, 0.7);
+      delay.delayTime.setTargetAtTime(p.delayTime, ctx.currentTime, 0.7);
+      feedback.gain.setTargetAtTime(p.feedback, ctx.currentTime, 0.7);
+      padOsc.frequency.setTargetAtTime(p.scale[0]/2, ctx.currentTime, 1.2);
+      padOsc2.frequency.setTargetAtTime(p.scale[0]/2*1.006, ctx.currentTime, 1.2);
+      if(playingFlag) padGain.gain.setTargetAtTime(0.16, ctx.currentTime, 1.4);
+      if(onTrackChange) onTrackChange(p.name||'');
+    }
+    function pluck(freq,t,amt,type){
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(amt,t+0.03);
+      g.gain.exponentialRampToValueAtTime(0.0008,t+1.5);
+      g.connect(filter); g.connect(delay);
+      [0,-6].forEach(cents=>{
+        const osc = ctx.createOscillator(); osc.type=type;
+        osc.frequency.value = freq * Math.pow(2, cents/1200);
+        osc.connect(g); osc.start(t); osc.stop(t+1.6);
+      });
+    }
+    function step(){
+      const t = ctx.currentTime;
+      const note = preset.scale[Math.floor(Math.random()*preset.scale.length)];
+      pluck(note,t,0.55,preset.oscType);
+      if(preset.pulse && Math.random()<0.3) pluck(note/2,t+0.04,0.3,'sine');
+      else if(Math.random()<0.3) pluck(note*2,t+0.06,0.22,preset.oscType);
+      stepCount++;
+      if(stepCount>=TRACK_STEPS && playlist.length>1){
+        stepCount=0; trackIndex=(trackIndex+1)%playlist.length; applyTrack(playlist[trackIndex]);
+      }
+      timer = setTimeout(step, preset.tempoMin + Math.random()*preset.tempoRange);
+    }
+    return {
+      start(list, onTrack){
+        ensure(); if(ctx.state==='suspended') ctx.resume();
+        clearTimeout(timer); playlist = list; trackIndex = 0; stepCount = 0; onTrackChange = onTrack||null;
+        playingFlag = true;
+        applyTrack(playlist[0]);
+        master.gain.cancelScheduledValues(ctx.currentTime);
+        master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
+        master.gain.linearRampToValueAtTime(volume, ctx.currentTime+0.6);
+        step();
+      },
+      stop(){
+        if(!ctx) return;
+        master.gain.cancelScheduledValues(ctx.currentTime);
+        master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
+        master.gain.linearRampToValueAtTime(0, ctx.currentTime+0.5);
+        padGain.gain.setTargetAtTime(0, ctx.currentTime, 0.5);
+        clearTimeout(timer); playingFlag = false;
+      },
+      setVolume(v){ volume=v; if(ctx && playingFlag) master.gain.setTargetAtTime(v, ctx.currentTime, 0.05); },
+      get playing(){ return playingFlag; }
+    };
+  })();
+
+  function fileToResizedDataURL(file, maxDim, quality){
+    maxDim = maxDim || 720; quality = quality || 0.82;
+    return new Promise((resolve,reject)=>{
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        const img = new Image();
+        img.onload = ()=>{
+          let w = img.width, h = img.height;
+          if(w>h && w>maxDim){ h=Math.round(h*maxDim/w); w=maxDim; }
+          else if(h>=w && h>maxDim){ w=Math.round(w*maxDim/h); h=maxDim; }
+          const canvas = document.createElement('canvas'); canvas.width=w; canvas.height=h;
+          canvas.getContext('2d').drawImage(img,0,0,w,h);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.onerror = reject;
+        img.src = reader.result;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* ---------------- modal ---------------- */
+  const overlay = document.getElementById('modalOverlay');
+  function closeModal(){ overlay.hidden = true; overlay.innerHTML=''; }
+  overlay.addEventListener('click', e=>{ if(e.target===overlay) closeModal(); });
+
+  function openDetailModal(entry){
+    overlay.hidden = false;
+    overlay.innerHTML = `<div class="modal-card">
+      <button class="modal-close" id="mClose">✕</button>
+      ${entry.img?`<img src="${entry.img}" style="width:100%;max-height:220px;object-fit:cover;border-radius:14px;margin-bottom:12px;display:block;">`:''}
+      <h3 class="disp">${entry.label}</h3>
+      <div class="modal-chips">${entry.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      <p class="modal-plot">${entry.plot}</p>
+      <div class="modal-actions">
+        <button class="act-primary" id="mEnter">🎧 Bước vào thế giới</button>
+        <a class="act-secondary" href="${entry.link}" target="_blank" rel="noopener">🔗 Mở link trực tiếp</a>
+      </div>
+    </div>`;
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    document.getElementById('mEnter').addEventListener('click', ()=>{ closeModal(); enterWorld(entry.id); });
+  }
+
+  function openFormModal(existing){
+    const isEdit = !!existing;
+    overlay.hidden = false;
+    overlay.innerHTML = `<div class="modal-card">
+      <button class="modal-close" id="mClose">✕</button>
+      <h3 class="disp">${isEdit?'Sửa hồ sơ':'Thêm hồ sơ mới'}</h3>
+      <div class="form-field"><label>Tên</label><input id="fName" value="${isEdit?existing.label:''}"></div>
+      <div class="form-field"><label>Tag / thể loại (cách nhau bằng dấu phẩy)</label><input id="fTags" value="${isEdit?existing.tags.join(', '):''}"></div>
+      <div class="form-field"><label>Cốt truyện ngắn</label><textarea id="fPlot">${isEdit?existing.plot:''}</textarea></div>
+      <div class="form-field"><label>Link nhân vật</label><input id="fLink" value="${isEdit?existing.link:''}"></div>
+      <div class="form-field"><label>Ảnh minh họa (tuỳ chọn, ảnh của riêng bạn)</label>
+        ${isEdit&&existing.img?`<img src="${existing.img}" style="width:100%;max-height:160px;object-fit:cover;border-radius:12px;margin-bottom:8px;display:block;">`:''}
+        <label class="file-btn" for="fImgFile">📷 Chọn ảnh từ máy</label>
+        <input type="file" id="fImgFile" accept="image/*" class="file-input-hidden">
+        <span class="file-name" id="fImgName"></span>
+        ${isEdit&&existing.img?'<button type="button" class="act-secondary" id="fImgClear" style="margin-top:8px;">Xoá ảnh</button>':''}
+      </div>
+      <div class="form-field"><label>Theme màu</label>
+        <select id="fTheme">
+          ${['home','kaiju','ghoul','csm','hq','op','jjk','hxh','mha','windbreaker','gakurakugai','irumafia','iruma'].map(k=>`<option value="${k}" ${isEdit&&existing.theme===k?'selected':''}>${k}</option>`).join('')}
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="act-primary" id="fSave">💾 Lưu</button>
+        ${isEdit?'<button class="act-secondary" id="fDelete">🗑️ Xoá</button>':''}
+      </div>
+    </div>`;
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    let pendingImg = isEdit ? (existing.img || null) : null;
+    let imgCleared = false;
+    document.getElementById('fImgFile').addEventListener('change', async e=>{
+      const file = e.target.files[0]; if(!file) return;
+      document.getElementById('fImgName').textContent = '✓ ' + file.name;
+      pendingImg = await fileToResizedDataURL(file);
+      imgCleared = false;
+    });
+    const clearBtn = document.getElementById('fImgClear');
+    if(clearBtn) clearBtn.addEventListener('click', ()=>{ pendingImg = null; imgCleared = true; });
+    document.getElementById('fSave').addEventListener('click', ()=>{
+      const label = document.getElementById('fName').value.trim();
+      const tags = document.getElementById('fTags').value.split(',').map(s=>s.trim()).filter(Boolean);
+      const plot = document.getElementById('fPlot').value.trim();
+      const link = document.getElementById('fLink').value.trim();
+      const theme = document.getElementById('fTheme').value;
+      const img = imgCleared ? null : (pendingImg || (isEdit?existing.img:null) || null);
+      if(!label || !link){
+        let warn = document.getElementById('fWarn');
+        if(!warn){
+          warn = document.createElement('p');
+          warn.id = 'fWarn';
+          warn.style.cssText = 'color:var(--accentD,#c0392b);font-size:12.5px;margin:-6px 0 12px;';
+          document.getElementById('fSave').closest('.modal-card').insertBefore(warn, document.getElementById('fSave').closest('.modal-actions'));
+        }
+        warn.textContent = 'Cần ít nhất Tên và Link nha!';
+        return;
+      }
+      if(isEdit){
+        Object.assign(existing, {label,tags,plot,link,theme,img});
+      } else {
+        entries.push({ id:'e'+Date.now(), type:'world', label, tags, plot, link, theme, img, frames:null });
+      }
+      saveEntries(); closeModal(); renderHallPanel('worlds');
+    });
+    if(isEdit){
+      document.getElementById('fDelete').addEventListener('click', ()=>{
+        entries = entries.filter(e=>e!==existing); saveEntries(); closeModal(); renderHallPanel('worlds');
+      });
+    }
+  }
+
+  /* ---------------- rendering ---------------- */
+  const hallTabsEl = document.getElementById('hallTabs');
+  const hallPanel = document.getElementById('hallPanel');
+
+  function allTags(){
+    const s = new Set(); entries.forEach(e=>e.tags.forEach(t=>s.add(t))); return Array.from(s);
+  }
+
+  function renderHallPanel(cat){
+    if(cat!=='worlds'){ renderExtrasPanel(cat); return; }
+    const filtered = entries.filter(e=>{
+      const q = searchQ.trim().toLowerCase();
+      const okQ = !q || e.label.toLowerCase().includes(q) || e.tags.join(' ').toLowerCase().includes(q);
+      const okTag = !activeTag || e.tags.includes(activeTag);
+      return okQ && okTag;
+    });
+    const chips = allTags().map(t=>`<button class="tagchip ${t===activeTag?'active':''}" data-tag="${t}">${t}</button>`).join('');
+    hallPanel.innerHTML = `
+      <div class="searchbar"><input id="searchInput" placeholder="Tìm hồ sơ theo tên hoặc thể loại..." value="${searchQ}"></div>
+      <div class="tagrow">${chips}</div>
+      ${ownerMode?'<button class="add-btn" id="addBtn">➕ Thêm hồ sơ mới</button>':''}
+      <div class="entry-grid">${filtered.map(e=>`
+        <div class="entry-card" data-id="${e.id}" role="button" tabindex="0">
+          ${ownerMode?`<span class="mgmt"><button type="button" data-edit="${e.id}">✏️</button></span>`:''}
+          <span class="mini">${buildMiniSwatch(e)}</span>
+          <span><strong class="disp">${e.label}</strong><span class="chips">${e.tags.map(t=>`<span>${t}</span>`).join('')}</span></span>
+        </div>`).join('') || '<p class="empty">Không tìm thấy hồ sơ nào khớp 🥲</p>'}</div>`;
+
+    document.getElementById('searchInput').addEventListener('input', e=>{ searchQ = e.target.value; renderHallPanel('worlds'); });
+    hallPanel.querySelectorAll('.tagchip').forEach(c=>c.addEventListener('click', ()=>{ activeTag = activeTag===c.dataset.tag?null:c.dataset.tag; renderHallPanel('worlds'); }));
+    hallPanel.querySelectorAll('.entry-card').forEach(card=>{
+      card.addEventListener('click', e=>{
+        if(e.target.closest('[data-edit]')) return;
+        const entry = entries.find(x=>x.id===card.dataset.id);
+        openDetailModal(entry);
+      });
+      card.addEventListener('keydown', e=>{
+        if((e.key==='Enter'||e.key===' ') && !e.target.closest('[data-edit]')){ e.preventDefault(); card.click(); }
+      });
+    });
+    hallPanel.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click', e=>{
+      e.stopPropagation();
+      const entry = entries.find(x=>x.id===b.dataset.edit);
+      openFormModal(entry);
+    }));
+    if(ownerMode){ document.getElementById('addBtn').addEventListener('click', ()=>openFormModal(null)); }
+  }
+
+  function buildMiniSwatch(entry){
+    if(entry && entry.img) return `<img src="${entry.img}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
+    return `<svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="var(--accentB)"/><circle cx="22" cy="22" r="8" fill="#fff"/></svg>`;
+  }
+
+  function renderExtrasPanel(cat){
+    const list = extras[cat] || [];
+    hallPanel.innerHTML = `
+      ${ownerMode?'<button class="add-btn" id="addExtraBtn">➕ Thêm mục</button>':''}
+      ${list.length ? `<div class="entry-grid">${list.map(it=>`
+        <div class="entry-card" data-id="${it.id}" role="button" tabindex="0">
+          ${ownerMode?`<span class="mgmt"><button type="button" data-edit-extra="${it.id}">✏️</button></span>`:''}
+          <span class="mini">${it.img?`<img src="${it.img}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`:'<svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" fill="var(--accentC)"/></svg>'}</span>
+          <span><strong class="disp">${it.title}</strong><span class="resnote">${(it.body||'').slice(0,40)}${it.body&&it.body.length>40?'…':''}</span></span>
+        </div>`).join('')}</div>` : `<p class="empty">${CAT_EMPTY[cat]()}</p>`}
+    `;
+    if(ownerMode){
+      document.getElementById('addExtraBtn').addEventListener('click', ()=>openExtraFormModal(cat, null));
+      hallPanel.querySelectorAll('[data-edit-extra]').forEach(b=>b.addEventListener('click', e=>{
+        e.stopPropagation();
+        const item = list.find(x=>x.id===b.dataset.editExtra);
+        openExtraFormModal(cat, item);
+      }));
+    }
+    hallPanel.querySelectorAll('.entry-card').forEach(card=>{
+      card.addEventListener('click', e=>{
+        if(e.target.closest('[data-edit-extra]')) return;
+        const item = list.find(x=>x.id===card.dataset.id);
+        openExtraDetailModal(item);
+      });
+    });
+  }
+
+  function openExtraDetailModal(item){
+    overlay.hidden = false;
+    overlay.innerHTML = `<div class="modal-card">
+      <button class="modal-close" id="mClose">✕</button>
+      ${item.img?`<img src="${item.img}" style="width:100%;max-height:220px;object-fit:cover;border-radius:14px;margin-bottom:12px;display:block;">`:''}
+      <h3 class="disp">${item.title}</h3>
+      <p class="modal-plot">${(item.body||'').replace(/\n/g,'<br>')}</p>
+      ${item.link?`<div class="modal-actions"><a class="act-primary" href="${item.link}" target="_blank" rel="noopener">🔗 Mở link</a></div>`:''}
+    </div>`;
+    document.getElementById('mClose').addEventListener('click', closeModal);
+  }
+
+  function openExtraFormModal(cat, existing){
+    const isEdit = !!existing;
+    overlay.hidden = false;
+    overlay.innerHTML = `<div class="modal-card">
+      <button class="modal-close" id="mClose">✕</button>
+      <h3 class="disp">${isEdit?'Sửa mục':'Thêm mục mới'} · ${CAT_LABELS[cat]}</h3>
+      <div class="form-field"><label>Tiêu đề</label><input id="exTitle" value="${isEdit?existing.title:''}"></div>
+      <div class="form-field"><label>Nội dung</label><textarea id="exBody">${isEdit?(existing.body||''):''}</textarea></div>
+      <div class="form-field"><label>Link (tuỳ chọn)</label><input id="exLink" value="${isEdit&&existing.link?existing.link:''}"></div>
+      <div class="form-field"><label>Ảnh (tuỳ chọn, ảnh của riêng bạn)</label>
+        ${isEdit&&existing.img?`<img src="${existing.img}" style="width:100%;max-height:140px;object-fit:cover;border-radius:12px;margin-bottom:8px;display:block;">`:''}
+        <label class="file-btn" for="exImgFile">📷 Chọn ảnh từ máy</label>
+        <input type="file" id="exImgFile" accept="image/*" class="file-input-hidden">
+        <span class="file-name" id="exImgName"></span>
+        ${isEdit&&existing.img?'<button type="button" class="act-secondary" id="exImgClear" style="margin-top:8px;">Xoá ảnh</button>':''}
+      </div>
+      <div class="modal-actions">
+        <button class="act-primary" id="exSave">💾 Lưu</button>
+        ${isEdit?'<button class="act-secondary" id="exDelete">🗑️ Xoá</button>':''}
+      </div>
+    </div>`;
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    let pendingImg = isEdit ? (existing.img||null) : null, cleared = false;
+    document.getElementById('exImgFile').addEventListener('change', async e=>{
+      const file = e.target.files[0]; if(!file) return;
+      document.getElementById('exImgName').textContent = '✓ ' + file.name;
+      pendingImg = await fileToResizedDataURL(file); cleared = false;
+    });
+    const clearBtn = document.getElementById('exImgClear');
+    if(clearBtn) clearBtn.addEventListener('click', ()=>{ pendingImg = null; cleared = true; });
+    document.getElementById('exSave').addEventListener('click', ()=>{
+      const title = document.getElementById('exTitle').value.trim();
+      const body = document.getElementById('exBody').value.trim();
+      const link = document.getElementById('exLink').value.trim();
+      const img = cleared ? null : (pendingImg || (isEdit?existing.img:null) || null);
+      if(!title) return;
+      if(!extras[cat]) extras[cat] = [];
+      if(isEdit){ Object.assign(existing, {title, body, link, img}); }
+      else { extras[cat].push({ id:'x'+Date.now(), title, body, link, img }); }
+      saveExtras(); closeModal(); renderHallPanel(cat);
+    });
+    if(isEdit){
+      document.getElementById('exDelete').addEventListener('click', ()=>{
+        extras[cat] = extras[cat].filter(x=>x!==existing);
+        saveExtras(); closeModal(); renderHallPanel(cat);
+      });
+    }
+  }
+
+  function setActive(container, cat){
+    container.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.cat===cat));
+  }
+
+  let hallActiveCat = 'worlds';
+  hallTabsEl.addEventListener('click', e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    hallActiveCat = b.dataset.cat;
+    setActive(hallTabsEl, hallActiveCat); renderHallPanel(hallActiveCat);
+  });
+
+  function enterWorld(id){
+    const w = entries.find(x=>x.id===id); if(!w) return;
+    currentWorld = id;
+    document.body.dataset.theme = w.theme;
+    document.getElementById('worldTag').textContent = w.tags.join(' · ');
+    document.getElementById('worldTitle').textContent = w.label;
+    document.getElementById('worldLede').textContent = w.plot;
+    document.getElementById('worldVinylArt').innerHTML = buildVinyl(w.theme);
+    document.getElementById('worldOpenLink').href = w.link;
+    renderFrames(document.getElementById('worldFrames'), w.frames);
+    document.getElementById('hall').hidden = true;
+    document.getElementById('worldView').hidden = false;
+    document.getElementById('crumbs').textContent = 'Sảnh / ' + w.label;
+    document.getElementById('worldVinyl').classList.add('playing');
+    document.getElementById('hallVinyl').classList.remove('playing');
+    document.getElementById('hallPlayBtn').textContent = '▶';
+    document.getElementById('hallNow').textContent = 'Sảnh · im lặng';
+    engine.start(buildPlaylist(w.theme), name=>{ document.getElementById('worldNow').textContent = '♪ ' + name; });
+    document.getElementById('worldPlayBtn').textContent = '❚❚';
+  }
+
+  function renderFrames(el, frames){
+    if(!frames){ el.innerHTML=''; return; }
+    el.innerHTML = frames.map((raw,i)=>{
+      const f = (typeof raw === 'string') ? {img:null, caption:raw} : (raw||{img:null,caption:''});
+      return `<div class="frame" style="--r:${(i%2?1:-1)*(5+i*3)}deg" data-i="${i}" role="button" tabindex="0">
+        ${ownerMode?`<button type="button" class="frame-edit" data-i="${i}">✏️</button>`:''}
+        <span class="frame-face" ${f.img?`style="background-image:url('${f.img}');background-size:cover;background-position:center;"`:''}></span>
+        <span class="frame-cap">${f.caption||''}</span>
+      </div>`;
+    }).join('');
+    el.querySelectorAll('.frame').forEach(fEl=>{
+      fEl.addEventListener('click', e=>{ if(e.target.closest('.frame-edit')) return; fEl.classList.toggle('open'); });
+    });
+    if(ownerMode){
+      el.querySelectorAll('.frame-edit').forEach(btn=>btn.addEventListener('click', e=>{
+        e.stopPropagation();
+        openFrameEditModal(parseInt(btn.dataset.i,10));
+      }));
+    }
+  }
+
+  function openFrameEditModal(index){
+    const w = entries.find(x=>x.id===currentWorld); if(!w) return;
+    if(!w.frames) w.frames = ['','',''];
+    const raw = w.frames[index];
+    const f = (typeof raw === 'string') ? {img:null, caption:raw} : (raw || {img:null,caption:''});
+    overlay.hidden = false;
+    overlay.innerHTML = `<div class="modal-card">
+      <button class="modal-close" id="mClose">✕</button>
+      <h3 class="disp">Sửa khung ảnh</h3>
+      ${f.img?`<img src="${f.img}" style="width:100%;max-height:160px;object-fit:cover;border-radius:12px;margin-bottom:8px;display:block;">`:''}
+      <div class="form-field"><label>Ảnh (fanart của riêng bạn)</label>
+        <label class="file-btn" for="frImgFile">📷 Chọn ảnh từ máy</label>
+        <input type="file" id="frImgFile" accept="image/*" class="file-input-hidden">
+        <span class="file-name" id="frImgName"></span>
+      </div>
+      <div class="form-field"><label>Caption</label><input id="frCap" value="${f.caption||''}"></div>
+      <div class="modal-actions">
+        <button class="act-primary" id="frSave">💾 Lưu</button>
+        ${f.img?'<button type="button" class="act-secondary" id="frClearImg">Xoá ảnh</button>':''}
+      </div>
+    </div>`;
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    let pendingImg = f.img || null, cleared = false;
+    document.getElementById('frImgFile').addEventListener('change', async e=>{
+      const file = e.target.files[0]; if(!file) return;
+      document.getElementById('frImgName').textContent = '✓ ' + file.name;
+      pendingImg = await fileToResizedDataURL(file, 600, 0.8); cleared = false;
+    });
+    const clearBtn = document.getElementById('frClearImg');
+    if(clearBtn) clearBtn.addEventListener('click', ()=>{ pendingImg = null; cleared = true; });
+    document.getElementById('frSave').addEventListener('click', ()=>{
+      const caption = document.getElementById('frCap').value.trim();
+      const img = cleared ? null : (pendingImg || null);
+      w.frames[index] = { img, caption };
+      saveEntries(); closeModal();
+      renderFrames(document.getElementById('worldFrames'), w.frames);
+    });
+  }
+
+  document.getElementById('backBtn').addEventListener('click', ()=>{
+    engine.stop();
+    document.getElementById('worldVinyl').classList.remove('playing');
+    document.body.dataset.theme = 'home';
+    document.getElementById('worldView').hidden = true;
+    document.getElementById('hall').hidden = false;
+    document.getElementById('crumbs').textContent = 'Sảnh';
+  });
+
+  document.getElementById('worldPlayBtn').addEventListener('click', ()=>{
+    const w = entries.find(x=>x.id===currentWorld); if(!w) return;
+    if(engine.playing){ engine.stop(); document.getElementById('worldVinyl').classList.remove('playing'); document.getElementById('worldPlayBtn').textContent='▶'; document.getElementById('worldNow').textContent='Tạm dừng · '+w.label; }
+    else { engine.start(buildPlaylist(w.theme), name=>{ document.getElementById('worldNow').textContent = '♪ ' + name; }); document.getElementById('worldVinyl').classList.add('playing'); document.getElementById('worldPlayBtn').textContent='❚❚'; }
+  });
+  document.getElementById('worldVinyl').addEventListener('click', ()=>document.getElementById('worldPlayBtn').click());
+  document.getElementById('worldVol').addEventListener('input', e=>engine.setVolume(e.target.value/100));
+
+  let hallPlaying = false;
+  function toggleHall(){
+    hallPlaying = !hallPlaying;
+    document.getElementById('hallVinyl').classList.toggle('playing', hallPlaying);
+    document.getElementById('hallPlayBtn').textContent = hallPlaying ? '❚❚' : '▶';
+    if(hallPlaying) engine.start(buildPlaylist('home'), name=>{ document.getElementById('hallNow').textContent = '♪ ' + name; });
+    else { engine.stop(); document.getElementById('hallNow').textContent = 'Sảnh · im lặng'; }
+  }
+  document.getElementById('hallPlayBtn').addEventListener('click', toggleHall);
+  document.getElementById('hallVinyl').addEventListener('click', toggleHall);
+  document.getElementById('hallVol').addEventListener('input', e=>engine.setVolume(e.target.value/100));
+
+  /* ---------------- owner mode ---------------- */
+  function refreshOwnerUI(){
+    document.getElementById('ownerToggle').classList.toggle('on', ownerMode);
+    renderHallPanel(hallActiveCat);
+  }
+  document.getElementById('ownerToggle').addEventListener('click', ()=>{
+    if(ownerMode){
+      ownerMode = false; localStorage.setItem(OWNER_KEY_FLAG,'0'); refreshOwnerUI(); return;
+    }
+    overlay.hidden = false;
+    overlay.innerHTML = `<div class="modal-card">
+      <button class="modal-close" id="mClose">✕</button>
+      <h3 class="disp">Mật khẩu chủ web</h3>
+      <div class="form-field"><input type="password" id="fPass" placeholder="Nhập mật khẩu..."></div>
+      <div class="modal-actions"><button class="act-primary" id="fPassGo">🔓 Mở khoá</button></div>
+    </div>`;
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    const inp = document.getElementById('fPass');
+    const tryLogin = ()=>{
+      if(inp.value.trim().toLowerCase() === OWNER_PASS.toLowerCase()){
+        ownerMode = true; localStorage.setItem(OWNER_KEY_FLAG,'1'); closeModal(); refreshOwnerUI();
+      } else {
+        inp.value=''; inp.placeholder='Sai mật khẩu, thử lại nha 🥲'; inp.focus();
+      }
+    };
+    document.getElementById('fPassGo').addEventListener('click', tryLogin);
+    inp.addEventListener('keydown', e=>{ if(e.key==='Enter') tryLogin(); });
+    setTimeout(()=>inp.focus(), 60);
+  });
+
+  document.getElementById('hallVinylArt').innerHTML = buildVinyl('home');
+  refreshOwnerUI();
+})();
+</script>
+</body>
+</html>
